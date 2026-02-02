@@ -4,11 +4,12 @@ public class Cliente implements Runnable {
     private PuestoAerolinea puestoAerolinea;
     private static Random random = new Random();
     private int vuelo = random.nextInt(4) + 1;
+    private int nombre;
 
 
-    public Cliente(PuestoAerolinea puestoA){
+    public Cliente(PuestoAerolinea puestoA, int nombre){
         this.puestoAerolinea=puestoA;
-
+        this.nombre=nombre;
 
     }
 
@@ -16,6 +17,7 @@ public class Cliente implements Runnable {
     public void run() {
 
         try {
+            System.out.println("Pasajero "+nombre+" entra al puesto de aerolinea "+puestoAerolinea.getNombre());
             puestoAerolinea.entradaPasajero();
         } catch (Exception ex) {
             System.getLogger(Cliente.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
@@ -29,6 +31,7 @@ public class Cliente implements Runnable {
 
         try {
             puestoAerolinea.salidaPasajero();
+            System.out.println("Pasajero "+nombre+" sale del puesto de aerolinea "+puestoAerolinea.getNombre());
         } catch (Exception ex) {
             System.getLogger(Cliente.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
