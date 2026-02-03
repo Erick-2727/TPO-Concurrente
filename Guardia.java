@@ -14,7 +14,7 @@ public class Guardia implements Runnable {
 
     @Override
     public void run() {
-
+        System.out.println("El Guardia empieza a trabajar");    
         while(true){
             try {
             puestoAerolinea.dejarEntrar();
@@ -22,6 +22,7 @@ public class Guardia implements Runnable {
             System.getLogger(Cliente.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
         try {
+            System.out.println("El guardia se va a dormir");
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block

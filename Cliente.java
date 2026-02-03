@@ -17,7 +17,7 @@ public class Cliente implements Runnable {
     public void run() {
 
         try {
-            System.out.println("Pasajero "+nombre+" entra al puesto de aerolinea "+puestoAerolinea.getNombre());
+            System.out.println("Pasajero "+nombre+" intenta entrar al puesto de aerolinea "+puestoAerolinea.getNombre());
             puestoAerolinea.entradaPasajero();
         } catch (Exception ex) {
             System.getLogger(Cliente.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
