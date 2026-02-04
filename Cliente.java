@@ -1,21 +1,22 @@
 import java.util.Random;
 
 public class Cliente implements Runnable {
+    private PuestoInforme puestoInforme;
     private PuestoAerolinea puestoAerolinea;
     private static Random random = new Random();
     private int vuelo = random.nextInt(4) + 1;
     private int nombre;
 
 
-    public Cliente(PuestoAerolinea puestoA, int nombre){
-        this.puestoAerolinea=puestoA;
+    public Cliente(PuestoInforme puestoI, int nombre){
+        this.puestoInforme=puestoI;
         this.nombre=nombre;
 
     }
 
     @Override
-    public void run() {
-
+    public void run() {     
+            puestoAerolinea=puestoInforme.obtenerPuestoAerolinea(vuelo);
         try {
             System.out.println("Pasajero "+nombre+" intenta entrar al puesto de aerolinea "+puestoAerolinea.getNombre());
             puestoAerolinea.entradaPasajero();
