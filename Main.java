@@ -4,6 +4,7 @@ public class Main {
 
         int numPuestos = 3;
         int numClientes = 10;
+        Reloj reloj=new Reloj();
         
         // Crear puestos de aerolínea
         PuestoAerolinea[] puestosAerolinea = new PuestoAerolinea[numPuestos];
@@ -11,10 +12,13 @@ public class Main {
             puestosAerolinea[i] = new PuestoAerolinea(2, "Puesto-" + (i)); 
         }
         //Puesto de informe
-        PuestoInforme puestoInforme=new PuestoInforme(puestosAerolinea);
+        PuestoInforme puestoInforme=new PuestoInforme(puestosAerolinea,reloj);
+        //Reloj
+        RelojHilo relojHilo=new RelojHilo(reloj);
+        new Thread(relojHilo).start();
 
         // Arrancar un guardia por puesto
-        Guardia[] guardias = new Guardia[numPuestos];
+        /*Guardia[] guardias = new Guardia[numPuestos];
         for (int i = 0; i < numPuestos; i++) {
             guardias[i] = new Guardia(puestosAerolinea[i]);
             new Thread(guardias[i], "Guardia-" + (i + 1)).start();
@@ -25,7 +29,7 @@ public class Main {
         for (int i = 0; i < numClientes; i++) {
             clientes[i] = new Cliente(puestoInforme, i + 1);
             new Thread(clientes[i], "Cliente-" + (i + 1)).start();
-        }
+        }*/
 
         // Opcional: mantener el main vivo (si quieres que el programa no termine inmediatamente)
         // try {

@@ -2,7 +2,6 @@ import java.util.Random;
 
 public class Guardia implements Runnable {
     private PuestoAerolinea puestoAerolinea;
-    private PuestoInforme puestoInforme;
     private static Random random = new Random();
     private int vuelo= random.nextInt(4) + 1;
 
