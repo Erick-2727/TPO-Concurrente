@@ -3,14 +3,16 @@
  * usa metodos sincronizados para evitar que se incremente cuando lo esten consultando.
  */
 public class Reloj{
-    private int hora;
-    public static int MINUTO = 1;
-    public static int HORA = MINUTO*60;
+    private int hora=6;
 
     public synchronized void actualizarHora(){
         try{
             this.hora = (this.hora + 1)%24;
-            System.out.println(" hora: "+hora);
+            if((this.hora%2)==0){
+                 System.out.println(" hora: "+hora);
+
+            }
+           
         }catch(Exception ex){
              System.getLogger(ex.getMessage());
         }

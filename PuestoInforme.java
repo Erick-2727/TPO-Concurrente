@@ -19,9 +19,9 @@ public class PuestoInforme {
         //Obtiene la aerolinea
         int numAerolinea = vuelo % cantPuestos;
         while (this.reloj.getHora() <= 6 || this.reloj.getHora() >= 22) {
-            System.out.println("esta esperando a que abra el aeropuero. hora: " + this.reloj.getHora() + ":00");
+            System.out.println(Thread.currentThread().getName() +" esta esperando a que abra el aeropuero. hora: " + this.reloj.getHora() + ":00");
             try {
-                Thread.sleep(100);
+                Thread.sleep(4000);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt(); // buen hábito
                 break;
@@ -35,7 +35,7 @@ public class PuestoInforme {
             e.printStackTrace();
         }
 
-        System.out.println("aeroliena asignada " + numAerolinea);
+        System.out.println(Thread.currentThread().getName() +": aeroliena asignada " + numAerolinea);
         PuestoAerolinea temp = this.puestosA[numAerolinea];
         mutex.release();
 

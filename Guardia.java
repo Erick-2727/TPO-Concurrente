@@ -18,7 +18,7 @@ public class Guardia implements Runnable {
             try {
             puestoAerolinea.dejarEntrar();
         } catch (Exception ex) {
-            System.getLogger(Cliente.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            System.getLogger(Pasajero.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
         try {
             System.out.println("El guardia se va a dormir");

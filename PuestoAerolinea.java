@@ -15,13 +15,13 @@ public class PuestoAerolinea {
     public void entradaPasajero() throws Exception {
         //entra el pasajero, si hay espacio toma el semaforo
         espacios.acquire();
-        System.out.println("Se ocupa espacio en el puesto de la aerolinea "+nombre);
+        System.out.println(Thread.currentThread().getName()+" ocupa espacio en el puesto de la aerolinea "+nombre);
 
     }
 
     public void salidaPasajero() throws Exception {
         //se va el pasajero y avisa al guardia que hay espacio
-        System.out.println("Se libera espacio en el puesto de la aerolinea "+nombre);
+        System.out.println(Thread.currentThread().getName()+" libera espacio en el puesto de la aerolinea "+nombre);
         guardia.release();
         
 
