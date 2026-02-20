@@ -1,16 +1,10 @@
 
-import java.util.Random;
-import java.util.concurrent.Semaphore;
 public class PuestoInforme {
-    private Random random;
     private PuestoAerolinea[] puestosA;
-    private int cantPuestos;
-    private Semaphore mutex = new Semaphore(1, true);
     private Reloj reloj;
 
     public PuestoInforme(PuestoAerolinea[] puestosA, Reloj reloj) {
         this.puestosA = puestosA;
-        this.cantPuestos = puestosA.length;
         this.reloj = reloj;
 
     }
@@ -24,16 +18,9 @@ public class PuestoInforme {
             System.out.println(Thread.currentThread().getName() +" esta esperando a que abra el aeropuero. hora: " + this.reloj.getHora() + ":00");
             this.wait();
         }
-        try {
-            //Mutex que simula el personal que lo atiende
-            mutex.acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         System.out.println(Thread.currentThread().getName() +":puesto de aeroliena asignada " + numAerolinea);
         PuestoAerolinea temp = this.puestosA[numAerolinea];
-        mutex.release();
 
         return temp;
     }
