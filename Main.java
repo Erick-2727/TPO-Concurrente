@@ -9,12 +9,12 @@ public class Main {
         // Crear puestos de aerolínea
         PuestoAerolinea[] puestosAerolinea = new PuestoAerolinea[numPuestos];
         for (int i = 0; i < numPuestos; i++) {
-            puestosAerolinea[i] = new PuestoAerolinea(4, "Puesto-" + (i)); 
+            puestosAerolinea[i] = new PuestoAerolinea(4, "Puesto-" + (i),3,4); 
         }
         //Puesto de informe
         PuestoInforme puestoInforme=new PuestoInforme(puestosAerolinea,reloj);
         //Reloj
-        RelojHilo relojHilo=new RelojHilo(reloj);
+        RelojHilo relojHilo=new RelojHilo(reloj,puestoInforme);
         new Thread(relojHilo).start();
 
         //Arrancar un guardia por puesto
@@ -27,7 +27,7 @@ public class Main {
         // Crear y arrancar clientes, asignados en round-robin a los puestos
         Pasajero[] clientes = new Pasajero[numClientes];
         for (int i = 0; i < numClientes; i++) {
-            clientes[i] = new Pasajero(puestoInforme, i + 1);
+            clientes[i] = new Pasajero(puestoInforme, i + 1,numPuestos);
             new Thread(clientes[i], "Pasajero-" + (i + 1)).start();
         }
 

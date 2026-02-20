@@ -5,7 +5,7 @@
 public class Reloj{
     private int hora=6;
 
-    public synchronized void actualizarHora(){
+    public synchronized boolean actualizarHora(){
         try{
             this.hora = (this.hora + 1)%24;
             if((this.hora%2)==0){
@@ -16,6 +16,7 @@ public class Reloj{
         }catch(Exception ex){
              System.getLogger(ex.getMessage());
         }
+        return this.hora==6;
     }
 
     public synchronized int getHora(){

@@ -4,18 +4,22 @@
  */
 public class RelojHilo implements Runnable{
     private Reloj reloj;
+    private PuestoInforme puestoInforme;
     //private Boleteria boleteria;
     
-    public RelojHilo(Reloj reloj){//, Boleteria boleteria
+    public RelojHilo(Reloj reloj, PuestoInforme puestoInforme){//, Boleteria boleteria
         this.reloj = reloj;
+        this.puestoInforme=puestoInforme;
         // this.boleteria = boleteria;
     }
     
     public void run(){
         try {
             while(true){
-                this.reloj.actualizarHora();
-                 //this.boleteria.abrirBoleteria();
+                if(this.reloj.actualizarHora()){
+                    this.puestoInforme.abrirBoleteria();
+                }
+                 
                 Thread.sleep(1000);
             }
         } catch (Exception e) {
