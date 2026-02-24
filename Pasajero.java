@@ -25,18 +25,18 @@ public class Pasajero implements Runnable {
         this.pasaje = new Pasaje(nroPasaje, numAerolinea, hora);
 
         try {
-            System.out.println("Pasajero " + nombre + " intenta entrar al puesto de informe");
+            System.out.println(Color.ROJO+"Pasajero " + nombre + " intenta entrar al puesto de informe"+Color.RESET);
             puestoAerolinea = puestoInforme.obtenerPuestoAerolinea(numAerolinea);
         } catch (Exception ex) {
             System.getLogger(Pasajero.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
         try {
-            System.out.println("Pasajero " + nombre + " intenta entrar al puesto de aerolinea " + puestoAerolinea.getNombre());
+            System.out.println(Color.NARANJA+"Pasajero " + nombre + " intenta entrar al puesto de aerolinea " + puestoAerolinea.getNombre()+Color.RESET);
             puestoAerolinea.entradaPasajero();
         } catch (Exception ex) {
             System.getLogger(Pasajero.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
-        System.out.println("Pasajero " + nombre + "Esperando en la fila del puesto de atencion ...");
+        System.out.println(Color.AMARILLO+"Pasajero " + nombre + " Esperando en la fila del puesto de atencion ..."+Color.RESET);
         try {
             Thread.sleep(1000 + random.nextInt(2000)); // Entre 1 y 3 segundos
         } catch (InterruptedException ex) {
@@ -45,8 +45,8 @@ public class Pasajero implements Runnable {
 
         try {
             puestoAerolinea.salidaPasajero(pasaje);
-            System.out.println("Pasajero " + nombre + " sale del puesto de aerolinea " + puestoAerolinea.getNombre());
-              System.out.println("Pasajero "+nombre+" "+this.pasaje.toString());
+            System.out.println(Color.VERDE+"Pasajero " + nombre + " sale del puesto de aerolinea " + puestoAerolinea.getNombre()+Color.RESET);
+              System.out.println(Color.VERDE+"Pasajero "+nombre+" "+this.pasaje.toString()+Color.RESET);
         } catch (Exception ex) {
             System.getLogger(Pasajero.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }

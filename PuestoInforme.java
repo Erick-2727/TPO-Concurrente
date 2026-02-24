@@ -1,28 +1,28 @@
+import java.util.concurrent.Semaphore;
 
 public class PuestoInforme {
     private PuestoAerolinea[] puestosA;
-    private Reloj reloj;
+    private int cantPuestos;
+    private final Semaphore mutex = new Semaphore(1, true);
+    private final Reloj reloj;
 
     public PuestoInforme(PuestoAerolinea[] puestosA, Reloj reloj) {
         this.puestosA = puestosA;
+        this.cantPuestos = puestosA.length;
         this.reloj = reloj;
-
-    }
-     public synchronized void abrirBoleteria()throws InterruptedException{
-        this.notifyAll();
     }
 
-    public synchronized PuestoAerolinea obtenerPuestoAerolinea(int numAerolinea) throws InterruptedException {
-        //Obtiene la aerolinea
-        while (this.reloj.getHora() <= 6 || this.reloj.getHora() >= 22) {
-            System.out.println(Thread.currentThread().getName() +" esta esperando a que abra el aeropuero. hora: " + this.reloj.getHora() + ":00");
-            this.wait();
+    public PuestoAerolinea obtenerPuestoAerolinea(int numAerolinea) throws InterruptedException {
+        // Espera bloqueada hasta que el aeropuerto esté abierto
+        reloj.esperarApertura();
+
+        // sección crítica que simula el empleado de informes
+        mutex.acquire();
+        try {
+            System.out.println(Thread.currentThread().getName() + ": puesto de aeroliena asignada " + numAerolinea);
+            return this.puestosA[numAerolinea];
+        } finally {
+            mutex.release();
         }
-
-        System.out.println(Thread.currentThread().getName() +":puesto de aeroliena asignada " + numAerolinea);
-        PuestoAerolinea temp = this.puestosA[numAerolinea];
-
-        return temp;
     }
-
 }

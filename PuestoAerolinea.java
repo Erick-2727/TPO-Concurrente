@@ -19,7 +19,7 @@ public class PuestoAerolinea {
     public void entradaPasajero() throws Exception {
         //entra el pasajero, si hay espacio toma el semaforo
         espacios.acquire();
-        System.out.println(Thread.currentThread().getName()+" entra en el puesto de la aerolinea "+nombre+" para Check-In");
+        System.out.println(Color.AZUL+""+Thread.currentThread().getName()+" entra en el puesto de la aerolinea "+nombre+" para Check-In"+Color.RESET);
 
     }
 
@@ -28,7 +28,7 @@ public class PuestoAerolinea {
         int tempTerminal=this.random.nextInt(this.cantTerminales)+1;
         int tempPuerta=this.random.nextInt(this.cantPuertasEmbarque)+1;
         pasaje.completarDatos(tempTerminal,tempPuerta);
-        System.out.println(Thread.currentThread().getName()+" termina el Check-In en el puesto de la aerolinea "+nombre);
+        System.out.println(Color.VERDE+Thread.currentThread().getName()+" termina el Check-In en el puesto de la aerolinea "+nombre+Color.RESET);
         
 
         guardia.release();
@@ -38,7 +38,7 @@ public class PuestoAerolinea {
 
     public void dejarEntrar() throws Exception {
         guardia.acquire();
-        System.out.println("Guardia deja entrar en puesto "+nombre);
+        System.out.println(Color.CIAN+"Guardia trabaja y deja entrar en puesto "+nombre+Color.RESET);
         espacios.release();
 
     }

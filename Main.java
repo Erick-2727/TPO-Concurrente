@@ -14,7 +14,7 @@ public class Main {
         //Puesto de informe
         PuestoInforme puestoInforme=new PuestoInforme(puestosAerolinea,reloj);
         //Reloj
-        RelojHilo relojHilo=new RelojHilo(reloj,puestoInforme);
+        RelojHilo relojHilo=new RelojHilo(reloj);
         new Thread(relojHilo).start();
 
         //Arrancar un guardia por puesto
@@ -31,11 +31,5 @@ public class Main {
             new Thread(clientes[i], "Pasajero-" + (i + 1)).start();
         }
 
-        // Opcional: mantener el main vivo (si quieres que el programa no termine inmediatamente)
-        // try {
-        //     Thread.sleep(60000); // 60 seg
-        // } catch (InterruptedException e) {
-        //     e.printStackTrace();
-        // }
     }
 }
