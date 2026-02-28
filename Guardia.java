@@ -1,7 +1,7 @@
 import java.util.Random;
-
+  @SuppressWarnings("FieldMayBeFinal")
 public class Guardia implements Runnable {
-    private PuestoAerolinea puestoAerolinea;
+    private PuestoAerolinea puestoAerolinea;  
     private static Random random = new Random();
     private int vuelo= random.nextInt(4) + 1;
 
@@ -24,8 +24,8 @@ public class Guardia implements Runnable {
             System.out.println(Color.CIAN+"El guardia se va a descansar"+Color.RESET);
             Thread.sleep(1000);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+                // TODO Auto-generated catch block
+
         }
         }
 

@@ -1,8 +1,9 @@
 
 import java.util.Random;
 import java.util.concurrent.Semaphore;
+   @SuppressWarnings("FieldMayBeFinal")
 public class PuestoAerolinea {
-    private static Random random = new Random();
+    private Random random = new Random(); 
     private Semaphore espacios;
     private Semaphore guardia = new Semaphore(0);
     private String nombre;
@@ -25,8 +26,8 @@ public class PuestoAerolinea {
 
     public void salidaPasajero(Pasaje pasaje) throws Exception {
         //se va el pasajero y avisa al guardia que hay espacio
-        int tempTerminal=this.random.nextInt(this.cantTerminales)+1;
-        int tempPuerta=this.random.nextInt(this.cantPuertasEmbarque)+1;
+        int tempTerminal=this.random.nextInt(this.cantTerminales);
+        int tempPuerta=this.random.nextInt(this.cantPuertasEmbarque);
         pasaje.completarDatos(tempTerminal,tempPuerta);
         System.out.println(Color.VERDE+Thread.currentThread().getName()+" termina el Check-In en el puesto de la aerolinea "+nombre+Color.RESET);
         

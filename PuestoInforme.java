@@ -2,13 +2,11 @@ import java.util.concurrent.Semaphore;
 
 public class PuestoInforme {
     private PuestoAerolinea[] puestosA;
-    private int cantPuestos;
     private final Semaphore mutex = new Semaphore(1, true);
     private final Reloj reloj;
 
     public PuestoInforme(PuestoAerolinea[] puestosA, Reloj reloj) {
         this.puestosA = puestosA;
-        this.cantPuestos = puestosA.length;
         this.reloj = reloj;
     }
 

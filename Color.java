@@ -12,8 +12,17 @@ public class Color {
     public static final String MAGENTA   = "\u001B[35m";
     public static final String CIAN      = "\u001B[36m";
     public static final String BLANCO    = "\u001B[37m";
-     public static final String[] COLORES = {
-        ROJO, VERDE, AMARILLO, NARANJA, AZUL, MAGENTA, CIAN, BLANCO
-    };
+
+    public static final String ROSA_FUERTE   = "\u001B[38;5;198m";
+    public static final String TURQUESA      = "\u001B[38;5;44m";
+    public static final String LIMA          = "\u001B[38;5;118m";
+    public static final String VIOLETA       = "\u001B[38;5;93m";
+    public static final String DORADO        = "\u001B[38;5;220m";
+    public static final String GRIS_CLARO    = "\u001B[38;5;250m";
+    public static final String ROJO_OSCURO   = "\u001B[38;5;124m";
+    public static final String AZUL_CIELO    = "\u001B[38;5;117m";
+    public static final String VERDE_MENTA   = "\u001B[38;5;121m";
+    public static final String FUCSIA        = "\u001B[38;5;201m";
+   
     
 }

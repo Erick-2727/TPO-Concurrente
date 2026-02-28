@@ -19,11 +19,7 @@ public class Reloj {
             hora = (hora + 1) % 24;
             boolean antesCerrado = !abierto(prev);
             boolean ahoraAbierto = abierto(hora);
-            if(hora%2==0){
-                System.out.println("Reloj hora: " + hora);
-            }
-            
-
+                System.out.println("Reloj hora: " + hora);       
             // si cambiamos de cerrado -> abierto, notificar a los que esperan
             if (antesCerrado && ahoraAbierto) {
                 abierto.signalAll();

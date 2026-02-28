@@ -12,7 +12,7 @@ public class Pasaje {
     }
 
     public String toString(){
-        return "Nro pasaje: #"+nroPasaje+" \t / aerolinea #"+aerolinea+" \t / terminal #"+this.terminal+" \t / puerta embarque #"+this.puertaEmbarque;
+        return "Nro pasaje: #"+nroPasaje+" \t / aerolinea #"+aerolinea+" \t / terminal #"+this.terminal+" \t / puerta embarque #"+this.puertaEmbarque+" \t / hora "+this.hora+"hs";
     }
 
     public int getAerolinea(){
