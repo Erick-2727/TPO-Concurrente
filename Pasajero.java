@@ -12,10 +12,10 @@ public class Pasajero implements Runnable {
     private int cantAerolineas;
     private Pasaje pasaje;
     private Tren tren;
-    private FreeShop freeShop;
+    private FreeShop[] freeShop;
     private Reloj reloj;
 
-    public Pasajero(PuestoInforme puestoI, int nombre, int cantAerolineas, Tren tren, FreeShop freeShop, Reloj reloj) {
+    public Pasajero(PuestoInforme puestoI, int nombre, int cantAerolineas, Tren tren, FreeShop[] freeShop, Reloj reloj) {
         this.puestoInforme = puestoI;
         this.nombre = nombre;
         this.cantAerolineas = cantAerolineas;
@@ -70,7 +70,8 @@ public class Pasajero implements Runnable {
         int entrarFreeShop = this.random.nextInt(2);
         if (entrarFreeShop == 1 && this.pasaje.getHora() - this.reloj.getHora() >= 2) {
             try {
-                this.freeShop.entrarFreeShop(this.nombre);
+                int numFreeshop=this.pasaje.getTerminal();
+                this.freeShop[numFreeshop].entrarFreeShop(this.nombre);
             } catch (InterruptedException ex) {
                 System.getLogger(Pasajero.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
             }
