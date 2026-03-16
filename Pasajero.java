@@ -66,7 +66,7 @@ public class Pasajero implements Runnable {
         } catch (InterruptedException | BrokenBarrierException ex) {
             System.getLogger(Pasajero.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
-
+        //decisión de entrar o no al free shop, solo entran si tienen al menos 2 horas antes del embarque
         int entrarFreeShop = this.random.nextInt(2);
         if (entrarFreeShop == 1 && this.pasaje.getHora() - this.reloj.getHora() >= 2) {
             try {
@@ -79,6 +79,7 @@ public class Pasajero implements Runnable {
         } else {
             System.out.println(Color.ROSA_FUERTE + "Pasajero " + nombre + " decide no entrar al free shop" + Color.RESET);
         }
+        //espera para el embarque, si el pasajero tiene mas de 1 hora de espera para el embarque, se muestra un mensaje y se duerme el hilo por la cantidad de horas que le quedan para el embarque
         int horasEsperaEmbarque = this.pasaje.getHora() - this.reloj.getHora() - 1;
         if (horasEsperaEmbarque > 0) {
             System.out.println(Color.ROSA_FUERTE + "Pasajero " + nombre + " espera " + horasEsperaEmbarque + " horas para el embarque de su vuelo de las " + this.pasaje.getHora() + " horas" + Color.RESET);

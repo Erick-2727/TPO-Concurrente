@@ -25,10 +25,11 @@ public class FreeShop {
                 System.out.println(Color.ROSA_FUERTE + "Pasajero " + nombre + " entra al free shop..." + Color.RESET);
                 int quiereComprar= random.nextInt(2);
                 if(quiereComprar==1){
+                    Thread.sleep(1000 + random.nextInt(1000)); //tiempo de compra entre 1 y 2 segundos
                     if(this.cajas.tryAcquire(1, TimeUnit.SECONDS)){
                         try {
                             System.out.println(Color.ROSA_FUERTE + "Pasajero " + nombre + " esta comprando en el free shop numero "+this.nombre + Color.RESET);
-                            Thread.sleep(1000 + random.nextInt(2000)); //tiempo de compra entre 1 y 3 segundos
+                            Thread.sleep(500 + random.nextInt(500)); //tiempo pagando entre 0,5 y 1 segundos
                             System.out.println(Color.ROSA_FUERTE + "Pasajero " + nombre + " termina de comprar en el free shop numero "+this.nombre + Color.RESET);
                         } finally {
                             this.cajas.release();
