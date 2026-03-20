@@ -1,0 +1,14 @@
+Poner unos 3 vuelos por aerolinea y hacer que saquen uno aleatorio del arreglo
+
+Embarque avisa a los del vuelo cuando es hora de embarcar(nueva clase(capaz un hilo por cada puerta)
+
+Cambiar cyclic barrier para que avise directamente al conductor para arrancar, tambien poner algo para que arranque si pasa cierto tiempo
+
+Que los clientes entren a diferente tiempo a lo largo del dia (que el horario del vuelo sae posterior a la hora de entrada)
+
+Proteger seccion critica en puesto Aerolinea
+
+Listo:
+Puesto de informe usar sycronized (Listo)
+
+Simular tiempo que tarda en volver el tren (Listo)

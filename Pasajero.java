@@ -32,8 +32,11 @@ public class Pasajero implements Runnable {
         this.pasaje = new Pasaje(nroPasaje, numAerolinea, hora);
 
         try {
+            //Espera bloqueada hasta que el aeropuerto esté abierto
+            reloj.esperarApertura();
             //llamada al metodo obtenerPuestoAerolinea para tener acceso a los metodos de esa aerolinea
             System.out.println(Color.ROJO + "Pasajero " + nombre + " intenta entrar al puesto de informe" + Color.RESET);
+             
             puestoAerolinea = puestoInforme.obtenerPuestoAerolinea(numAerolinea);
         } catch (InterruptedException ex) {
             System.getLogger(Pasajero.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);

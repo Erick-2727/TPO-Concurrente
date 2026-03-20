@@ -10,6 +10,7 @@ public class Reloj {
     private int hora = 6;
     private final Lock lock = new ReentrantLock(true); 
     private final Condition abierto = lock.newCondition();
+    private final Condition horaEsperada = lock.newCondition();
 
     // llamar periódicamente desde RelojHilo
     public void actualizarHora() {
@@ -23,7 +24,9 @@ public class Reloj {
             // si cambiamos de cerrado -> abierto, notificar a los que esperan
             if (antesCerrado && ahoraAbierto) {
                 abierto.signalAll();
-            }
+            }   
+            // notificar a los que esperan una hora específica
+            horaEsperada.signalAll();
         } finally {
             lock.unlock();
         }
@@ -34,6 +37,17 @@ public class Reloj {
         try {
             while (!abierto(hora)) {
                 abierto.await();
+            }
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public void esperarHora(int horaEsperada) throws InterruptedException {
+        lock.lock();
+        try {
+            while (hora != horaEsperada) {
+                this.horaEsperada.await();
             }
         } finally {
             lock.unlock();

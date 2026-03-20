@@ -20,6 +20,8 @@ public class ConductorTren implements Runnable {
                     Thread.sleep(1000);
 
                 }
+                //simulacion de vuelta al punto de partida para reiniciar el proceso
+                Thread.sleep(3000);
                 this.tren.finalizarViaje();
 
             } catch (InterruptedException e) {
